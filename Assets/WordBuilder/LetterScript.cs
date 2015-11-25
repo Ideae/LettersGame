@@ -62,7 +62,12 @@ public class LetterScript : MonoBehaviour
         {
             caught = false;
             shaking = !TryPlaceBlock();
-            if (shaking) startshake = Time.time;
+            if (shaking)
+            {
+                startshake = Time.time;
+                WordManager.instance.audio.clip = Resources.Load<AudioClip>("kidsounds/SuccessFailPrompt/oopsDoesntGoThere");
+                WordManager.instance.audio.Play();
+            }
             animating = true;
         }
     }

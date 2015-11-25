@@ -1,19 +1,27 @@
 ﻿using UnityEngine;
 
-public class picker : MonoBehaviour {
-
+public class picker : MonoBehaviour
+{
+    public bool grey = false;
 	// Use this for initialization
 	void Start () {
-	
-	}
+        if (grey)
+        {
+            var sr = gameObject.GetComponent<SpriteRenderer>();
+            Color c = sr.color * 0.5f;
+            c.a = 1f;
+            sr.color = c;
+        }
+    }
 	
 	// Update is called once per frame
 	void Update () {
-	
+	    
 	}
 
 	void OnMouseDown()
 	{
+	    if (grey) return;
 		if (this.gameObject.name == "AlphaBlock") {
 			Application.LoadLevel ("AlphaBlockGame");
 		} else if (this.gameObject.name == "MarbleGame") {
