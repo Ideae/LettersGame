@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 using System.Collections.Generic;
 using Random = UnityEngine.Random;
@@ -56,9 +57,27 @@ public class WordManager : MonoBehaviour
     public Sprite[] pictures = new Sprite[5];
     public GameObject finger;
     private AudioNames audioName = AudioNames.letsbuildwords;
+    
     public static string GetFileName(AudioNames audioname)
     {
-        return string.Format("{0:00}-", (int)audioname) + audioname.ToString();
+        int num = (int) audioname + 1;
+        if (num >= 6) num++;
+        return string.Format("{0:00}-", num) + audioname.ToString();
+    }
+
+    public void PlaySound(AudioNames name)
+    {
+        string filename = GetFileName(name);
+        string clipname = "kidsounds/" + filename;
+        audio.clip = Resources.Load<AudioClip>(clipname);
+        audio.Play();
+    }
+
+    public void PlayWord()
+    {
+        string clipname = "kidsounds/words/" + currentWord.word.ToLower();
+        audio.clip = Resources.Load<AudioClip>(clipname);
+        audio.Play();
     }
 
     public static LevelInfo currentWord;
@@ -69,16 +88,15 @@ public class WordManager : MonoBehaviour
     private string tempMask = "";
     public GameObject letterPrefab;
     
-
     private float? start = null, size = null;
     private float padding = 0.1f;
     private float topY = 3f, botY = -3f;
 
-    private AudioSource audio;
-    public bool isInteractive = true;
+    public AudioSource audio;
+    public bool isInteractive = false;
     void Start()
     {
-        isInteractive = true;
+        //isInteractive = true;
         _instance = this;
         audio = GetComponent<AudioSource>();
         if (currentLevel >= words.Count)
@@ -115,6 +133,10 @@ public class WordManager : MonoBehaviour
                 var sr = letterScript.GetComponent<SpriteRenderer>();
                 sr.color = new Color(0, 0, 0, 0.5f);
                 sr.sortingOrder = 1;
+                if (currentLevel == 0)
+                {
+                    fingerDest2 = letterScript.transform.position;
+                }
             }
             else
             {
@@ -152,9 +174,15 @@ public class WordManager : MonoBehaviour
             remainingLetters.Add(letterScript);
             
         }
-        string clipname = "kidsounds/words/" + currentWord.word.ToLower();
-        audio.clip = Resources.Load<AudioClip>(clipname);
-        audio.Play();
+        if (currentLevel == 0)
+        {
+            StartCoroutine("AudioPlayer");
+        }
+        else
+        {
+            PlayWord();
+            isInteractive = true;
+        }
     }
 
     public bool IsFull(int index)
@@ -178,6 +206,7 @@ public class WordManager : MonoBehaviour
             ShowGoodJob();
             instance.winTime = Time.time;
             currentLevel++;
+            StartCoroutine("completeAudio");
         }
     }
 
@@ -204,10 +233,90 @@ public class WordManager : MonoBehaviour
             instance.goodjobs.Add(letterScript);
         }
     }
+    
+    IEnumerator AudioPlayer()
+    {
+        float delay = 0.5f;
+        PlaySound(AudioNames.letsbuildwords);
+        yield return new WaitForSeconds(audio.clip.length + delay);
+        PlaySound(AudioNames.WatchMeBuild);
+        yield return new WaitForSeconds(audio.clip.length + delay);
+        PlaySound(AudioNames.ThisIsTheWord);
+        yield return new WaitForSeconds(audio.clip.length);
+        PlayWord();
+        yield return new WaitForSeconds(audio.clip.length + delay);
+        PlaySound(AudioNames.WatchMeBuild);
+        yield return new WaitForSeconds(0.75f);
+        audio.Stop();
+        finger.GetComponentInChildren<SpriteRenderer>().enabled = true;
+        GameObject fingerLetterTemp = null;
+        Vector3 prevLetterPos = Vector3.zero;
+        
+        for (int i = 0; i < remainingLetters.Count; i++)
+        {
+            LetterScript ls = remainingLetters[i];
+            float s = ls.gameObject.GetComponent<SpriteRenderer>().sprite.bounds.size.x;
+            if (char.ToLower(ls.letter) == 'o')
+            {
+                fingerDest = ls.gameObject.transform.position;
+
+                prevLetterPos = ls.gameObject.transform.position;// - new Vector3(s,s,0f)/2f;
+                fingerLetterTemp = ls.gameObject;
+            }
+        }
+        yield return StartCoroutine("moveFinger");
+        fingerDest = fingerDest2;
+        fingerLetter = fingerLetterTemp;
+        fingerLetterDest = fingerDest2;
+        yield return StartCoroutine("moveFinger");
+        yield return new WaitForSeconds(1.5f);
+        fingerDest = new Vector3(0,-6,0);
+        fingerLetter = fingerLetterTemp;
+        fingerLetterDest = prevLetterPos;
+        yield return StartCoroutine("moveFinger");
+        isInteractive = true;
+        PlaySound(AudioNames.NowYouTry);
+        yield return new WaitForSeconds(1.2f);
+        audio.Stop();
+        yield return new WaitForSeconds(1f);
+        PlaySound(AudioNames.DragTheLetter);
+        yield return new WaitForSeconds(audio.clip.length + delay);
+    }
+
+    IEnumerator completeAudio()
+    {
+        float delay = 0.5f;
+        PlaySound(AudioNames.YouCompletedTheWord);
+        yield return new WaitForSeconds(audio.clip.length + delay);
+        PlayWord();
+        yield return new WaitForSeconds(audio.clip.length + delay);
+
+    }
+    Vector3 fingerDest = Vector3.zero, fingerDest2 = Vector3.zero;
+    private Vector3 fingerLetterDest = Vector3.zero;
+    private GameObject fingerLetter;
+    IEnumerator moveFinger()
+    {
+        float speed = 0.05f, delay = 0.01f;
+        while (finger.transform.position != fingerDest)
+        {
+            finger.transform.position = Vector3.MoveTowards(finger.transform.position, fingerDest, speed);
+            if (fingerLetter != null)
+            {
+                fingerLetter.transform.position = Vector3.MoveTowards(fingerLetter.transform.position, fingerLetterDest, speed);
+            }
+            yield return new WaitForSeconds(delay);
+        }
+
+    }
 
     public List<LetterScript> remainingLetters = new List<LetterScript>();
     void Update()
     {
+        if (!isInteractive)
+        {
+            return;
+        }
         if (wordComplete)
         {
             float t = (Time.time - winTime) * 3f;
