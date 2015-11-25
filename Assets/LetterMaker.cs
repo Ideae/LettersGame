@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,10 @@ public class LetterMaker : MonoBehaviour {
   LineRenderer trace;
   public Material mat;
   public GameObject marble;
-
+  public bool isAutoCompleting;
+  private float progress;
+  public event Action OnComplete;
+  public bool PointsOnly;
 
   // Use this for initialization
 	void Start () {
@@ -44,8 +48,14 @@ public class LetterMaker : MonoBehaviour {
 
     var pathmarkers = transform.FindChild("PathMarkers");
     var tp = from Transform path in pathmarkers select path.position;
+    var tr = from Transform path in pathmarkers select path.GetComponent<Renderer>();
+	  foreach (var renderer1 in tr) {
+	    renderer1.sortingLayerName = "Middle";
+      renderer1.material.color = Color.blue;
+
+    }
     //tracePosList = Curver.MakeSmoothCurve(tp.ToArray(), 6);
-	  tracePosList = tp.ToArray();
+    tracePosList = tp.ToArray();
 
     GetComponent<MeshRenderer>().sortingLayerName = "Background";
 
@@ -69,40 +79,45 @@ public class LetterMaker : MonoBehaviour {
 
 	}
 
+  private float prevDot = 0;
   // Update is called once per frame
   void Update () {
     var mousepos = Camera.main.ScreenToWorldPoint(Input.mousePosition + new Vector3(0,0,10));
     var dist = Vector3.Distance(mousepos , marble.transform.position);
     var dir = tracePosList[currentPos + 1] - tracePosList[currentPos];
     var relPt = mousepos - tracePosList[currentPos];
-    if (dist < 1.5f && Input.GetMouseButton(0)) {
+    if (isAutoCompleting || dist < 1f && Input.GetMouseButton(0)) {
       var dot = Vector2.Dot(relPt, dir.normalized);
-      var projPt = dot*dir.normalized;
+      if (dot < prevDot) dot = prevDot;
 
-      if (!(dot < 0) && !(projPt.sqrMagnitude > dir.sqrMagnitude)) {
-        //marble.transform.position = Vector3.Lerp(marble.transform.position, projPt + tracePosList[currentPos], 0.5f);
+      var projPt = dot*dir.normalized;
+      if (isAutoCompleting)  projPt = (progress += .1f )*dir.normalized;
+
+      if((isAutoCompleting || !(dot < 0) ) && !(projPt.sqrMagnitude > dir.sqrMagnitude)) {
         marble.transform.position = Vector3.Lerp(marble.transform.position, projPt + tracePosList[currentPos],0.7f);
       }
-
-        //if (currentPos > 0 && Vector3.Distance(marble.transform.position, tracePosList[currentPos]) < 0.5) {
-        //  marble.transform.position = tracePosList[currentPos];
-        //  currentPos--;
-        //}
-        //else
-        if (Vector3.Distance(marble.transform.position, tracePosList[currentPos + 1]) <0.7) {
+        if (Vector3.Distance(marble.transform.position, tracePosList[currentPos + 1]) <0.5) {
           if (currentPos < tracePosList.Length - 2) {
             marble.transform.position = tracePosList[currentPos+1];
           currentPos++;
-          }
+            progress = 0;
+          prevDot = 0;
+        }
           else {
-            currentPos = 0;
-            marble.transform.position = tracePosList[currentPos];
-
+            isAutoCompleting = false;
+            if (OnComplete != null) {
+              var a = OnComplete;
+               OnComplete = null;
+              a.Invoke();
+            }
           }
         }
-      
     }
-   
+
+    else {
+      Reset();
+    }
+
     var t = new List<Vector3>();
     var l = new List<Vector3>();
     
@@ -124,15 +139,21 @@ public class LetterMaker : MonoBehaviour {
     if (t.Count > 0) t.Add(Vector3.MoveTowards(marble.transform.position, t[t.Count - 1], 0.2f));
     t.Add(marble.transform.position);
     if (t.Count > 0) t.Add(Vector3.MoveTowards(marble.transform.position, t[t.Count - 1], -0.2f));
-
-
-    //if (l.Count > 3 && Vector3.Distance(l[0], l[1]) < 0.5) { l.RemoveAt(0);}
-    //if (t.Count > 3 && Vector3.Distance(t[t.Count-1], t[t.Count-2]) < 0.5) t.RemoveAt(t.Count-1);
+    
     line.SetVertexCount(l.Count);
     trace.SetVertexCount(t.Count);
     for (int i = 0; i < l.Count; i++) line.SetPosition(i,l[i]);
     for (int i = 0; i < t.Count; i++) trace.SetPosition(i,t[i]);
-    
+    line.enabled = !PointsOnly;
   }
+  public void Reset()
+  {
 
+    currentPos = 0;
+    progress = 0;
+    marble.transform.position = tracePosList[0];
+  }
+  public void AutoComplete() {
+    this.isAutoCompleting = true;
+  }
 }
