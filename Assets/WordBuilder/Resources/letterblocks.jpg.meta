@@ -1,0 +1,452 @@
+fileFormatVersion: 2
+guid: 4d64e7bfda393934f987347474a855f8
+timeCreated: 1447882397
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: letterblocks_0
+    21300002: letterblocks_1
+    21300004: letterblocks_2
+    21300006: letterblocks_3
+    21300008: letterblocks_4
+    21300010: letterblocks_5
+    21300012: letterblocks_6
+    21300014: letterblocks_7
+    21300016: letterblocks_8
+    21300018: letterblocks_9
+    21300020: letterblocks_10
+    21300022: letterblocks_11
+    21300024: letterblocks_12
+    21300026: letterblocks_13
+    21300028: letterblocks_14
+    21300030: letterblocks_15
+    21300032: letterblocks_16
+    21300034: letterblocks_17
+    21300036: letterblocks_18
+    21300038: letterblocks_19
+    21300040: letterblocks_20
+    21300042: letterblocks_21
+    21300044: letterblocks_22
+    21300046: letterblocks_23
+    21300048: letterblocks_24
+    21300050: letterblocks_25
+    21300052: letterblocks_26
+    21300054: letterblocks_27
+    21300056: letterblocks_28
+    21300058: letterblocks_29
+    21300060: letterblocks_30
+    21300062: letterblocks_31
+    21300064: letterblocks_32
+    21300066: letterblocks_33
+    21300068: letterblocks_34
+    21300070: letterblocks_35
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: letterblocks_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 753.333313
+        width: 151.166672
+        height: 150.666672
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: letterblocks_1
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 753.333313
+        width: 151.166672
+        height: 150.666672
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: letterblocks_2
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 753.333313
+        width: 151.166672
+        height: 150.666672
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: letterblocks_3
+      rect:
+        serializedVersion: 2
+        x: 453
+        y: 753.333313
+        width: 151.166672
+        height: 150.666672
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: letterblocks_4
+      rect:
+        serializedVersion: 2
+        x: 604
+        y: 753.333313
+        width: 151.166672
+        height: 150.666672
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: letterblocks_5
+      rect:
+        serializedVersion: 2
+        x: 755
+        y: 753.333313
+        width: 151.166672
+        height: 150.666672
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: letterblocks_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 603.333313
+        width: 151.166672
+        height: 150.666672
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: letterblocks_7
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 603.333313
+        width: 151.166672
+        height: 150.666672
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: letterblocks_8
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 603.333313
+        width: 151.166672
+        height: 150.666672
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: letterblocks_9
+      rect:
+        serializedVersion: 2
+        x: 453
+        y: 603.333313
+        width: 151.166672
+        height: 150.666672
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: letterblocks_10
+      rect:
+        serializedVersion: 2
+        x: 604
+        y: 603.333313
+        width: 151.166672
+        height: 150.666672
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: letterblocks_11
+      rect:
+        serializedVersion: 2
+        x: 755
+        y: 603.333313
+        width: 151.166672
+        height: 150.666672
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: letterblocks_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 453.333313
+        width: 151.166672
+        height: 150.666672
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: letterblocks_13
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 453.333313
+        width: 151.166672
+        height: 150.666672
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: letterblocks_14
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 453.333313
+        width: 151.166672
+        height: 150.666672
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: letterblocks_15
+      rect:
+        serializedVersion: 2
+        x: 453
+        y: 453.333313
+        width: 151.166672
+        height: 150.666672
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: letterblocks_16
+      rect:
+        serializedVersion: 2
+        x: 604
+        y: 453.333313
+        width: 151.166672
+        height: 150.666672
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: letterblocks_17
+      rect:
+        serializedVersion: 2
+        x: 755
+        y: 453.333313
+        width: 151.166672
+        height: 150.666672
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: letterblocks_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 303.333313
+        width: 151.166672
+        height: 150.666672
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: letterblocks_19
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 303.333313
+        width: 151.166672
+        height: 150.666672
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: letterblocks_20
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 303.333313
+        width: 151.166672
+        height: 150.666672
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: letterblocks_21
+      rect:
+        serializedVersion: 2
+        x: 453
+        y: 303.333313
+        width: 151.166672
+        height: 150.666672
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: letterblocks_22
+      rect:
+        serializedVersion: 2
+        x: 604
+        y: 303.333313
+        width: 151.166672
+        height: 150.666672
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: letterblocks_23
+      rect:
+        serializedVersion: 2
+        x: 755
+        y: 303.333313
+        width: 151.166672
+        height: 150.666672
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: letterblocks_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 153.333328
+        width: 151.166672
+        height: 150.666672
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: letterblocks_25
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 153.333328
+        width: 151.166672
+        height: 150.666672
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: letterblocks_26
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 153.333328
+        width: 151.166672
+        height: 150.666672
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: letterblocks_27
+      rect:
+        serializedVersion: 2
+        x: 453
+        y: 153.333328
+        width: 151.166672
+        height: 150.666672
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: letterblocks_28
+      rect:
+        serializedVersion: 2
+        x: 604
+        y: 153.333328
+        width: 151.166672
+        height: 150.666672
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: letterblocks_29
+      rect:
+        serializedVersion: 2
+        x: 755
+        y: 153.333328
+        width: 151.166672
+        height: 150.666672
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: letterblocks_30
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3.33332825
+        width: 151.166672
+        height: 150.666672
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: letterblocks_31
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 3.33332825
+        width: 151.166672
+        height: 150.666672
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: letterblocks_32
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 3.33332825
+        width: 151.166672
+        height: 150.666672
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: letterblocks_33
+      rect:
+        serializedVersion: 2
+        x: 453
+        y: 3.33332825
+        width: 151.166672
+        height: 150.666672
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: letterblocks_34
+      rect:
+        serializedVersion: 2
+        x: 604
+        y: 3.33332825
+        width: 151.166672
+        height: 150.666672
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: letterblocks_35
+      rect:
+        serializedVersion: 2
+        x: 755
+        y: 3.33332825
+        width: 151.166672
+        height: 150.666672
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
